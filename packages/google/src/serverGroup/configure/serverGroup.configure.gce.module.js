@@ -4,6 +4,7 @@ import { module } from 'angular';
 
 import { GOOGLE_AUTOSCALINGPOLICY_COMPONENTS_BASICSETTINGS_BASICSETTINGS_COMPONENT } from '../../autoscalingPolicy/components/basicSettings/basicSettings.component';
 import { GOOGLE_AUTOSCALINGPOLICY_COMPONENTS_METRICSETTINGS_METRICSETTINGS_COMPONENT } from '../../autoscalingPolicy/components/metricSettings/metricSettings.component';
+import { GOOGLE_AUTOSCALINGPOLICY_COMPONENTS_SCALINGSCHEDULES_SCALINGSCHEDULES_COMPONENT } from '../../autoscalingPolicy/components/scalingSchedules/scalingSchedules.component';
 import { GCE_CACHE_REFRESH } from '../../cache/cacheRefresh.component';
 import { GCE_IMAGE_SELECT } from '../../image/ImageSelect';
 import { GOOGLE_INSTANCE_CUSTOM_CUSTOMINSTANCEBUILDER_GCE_SERVICE } from './../../instance/custom/customInstanceBuilder.gce.service';
@@ -13,6 +14,7 @@ import { GCE_ACCELERATOR_CONFIGURER } from './wizard/advancedSettings/GceAcceler
 import { GOOGLE_SERVERGROUP_CONFIGURE_WIZARD_ADVANCEDSETTINGS_ADVANCEDSETTINGSSELECTOR_DIRECTIVE } from './wizard/advancedSettings/advancedSettingsSelector.directive';
 import { GCE_DISK_CONFIGURER } from './wizard/advancedSettings/diskConfigurer.component';
 import { GCE_AUTOHEALING_POLICY_SELECTOR } from './wizard/autoHealingPolicy/autoHealingPolicySelector.component';
+import { GCE_AUTOSCALING_POLICY_SELECTOR } from './wizard/autoScalingPolicy/autoScalingPolicySelector.component';
 import { GOOGLE_SERVERGROUP_CONFIGURE_WIZARD_CAPACITY_ADVANCEDCAPACITYSELECTOR_COMPONENT } from './wizard/capacity/advancedCapacitySelector.component';
 import { GOOGLE_SERVERGROUP_CONFIGURE_WIZARD_CAPACITY_SIMPLECAPACITYSELECTOR_COMPONENT } from './wizard/capacity/simpleCapacitySelector.component';
 import { GCE_CUSTOM_INSTANCE_CONFIGURER } from './wizard/customInstance/customInstanceConfigurer.component';
@@ -30,7 +32,9 @@ export const name = GOOGLE_SERVERGROUP_CONFIGURE_SERVERGROUP_CONFIGURE_GCE_MODUL
 module(GOOGLE_SERVERGROUP_CONFIGURE_SERVERGROUP_CONFIGURE_GCE_MODULE, [
   GOOGLE_AUTOSCALINGPOLICY_COMPONENTS_BASICSETTINGS_BASICSETTINGS_COMPONENT,
   GOOGLE_AUTOSCALINGPOLICY_COMPONENTS_METRICSETTINGS_METRICSETTINGS_COMPONENT,
+  GOOGLE_AUTOSCALINGPOLICY_COMPONENTS_SCALINGSCHEDULES_SCALINGSCHEDULES_COMPONENT,
   GCE_LOAD_BALANCING_POLICY_SELECTOR,
+  GCE_AUTOSCALING_POLICY_SELECTOR,
   GCE_AUTOHEALING_POLICY_SELECTOR,
   GOOGLE_INSTANCE_CUSTOM_CUSTOMINSTANCEBUILDER_GCE_SERVICE,
   GCE_CACHE_REFRESH,

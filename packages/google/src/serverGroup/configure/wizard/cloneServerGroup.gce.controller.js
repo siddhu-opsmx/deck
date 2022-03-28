@@ -61,8 +61,9 @@ angular
         securityGroups: require('./securityGroups/securityGroups.html'),
         instanceType: require('./instanceType/instanceType.html'),
         capacity: require('./capacity/capacity.html'),
-        zones: require('./capacity/zones.html'),
         autoHealingPolicy: require('./autoHealingPolicy/autoHealingPolicy.html'),
+        autoScalingPolicy: require('./autoScalingPolicy/autoScalingPolicy.html'),
+        zones: require('./capacity/zones.html'),
         advancedSettings: require('./advancedSettings/advancedSettings.html'),
       };
 
@@ -155,7 +156,8 @@ angular
               .register({ page: 'capacity', subForm: 'capacitySubForm' })
               .register({ page: 'zones', subForm: 'zonesSubForm' })
               .register({ page: 'load-balancers', subForm: 'loadBalancerSubForm' })
-              .register({ page: 'autohealing-policy', subForm: 'autoHealingPolicySubForm' });
+              .register({ page: 'autohealing-policy', subForm: 'autoHealingPolicySubForm' })
+              .register({ page: 'autoscaling-policy', subForm: 'autoScalingPolicySubForm' });
           })
           .catch((e) => {
             $log.error('Error generating server group command: ', e);
@@ -429,6 +431,16 @@ angular
 
       this.setAutoHealingPolicy = function (autoHealingPolicy) {
         $scope.command.autoHealingPolicy = autoHealingPolicy;
+      };
+
+      this.onEnableAutoScalingChange = function () {
+        // Prevent empty auto-scaling policies from being overwritten by those of their ancestors
+        $scope.command.overwriteAncestorAutoScalingPolicy =
+          $scope.command.autoScalingPolicy != null && $scope.command.enableAutoScaling === false;
+      };
+
+      this.setAutoScalingPolicy = function (autoScalingPolicy) {
+        $scope.command.autoScalingPolicy = autoScalingPolicy;
       };
 
       this.cancel = function () {
