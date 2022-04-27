@@ -2,6 +2,7 @@
 
 import { module } from 'angular';
 import _ from 'lodash';
+import timezones from './standardTimezone.json';
 
 export const GOOGLE_AUTOSCALINGPOLICY_COMPONENTS_SCALINGSCHEDULES_SCALINGSCHEDULES_COMPONENT =
   'spinnaker.deck.gce.autoscalingPolicy.scalingSchedules.component';
@@ -18,6 +19,8 @@ module(GOOGLE_AUTOSCALINGPOLICY_COMPONENTS_SCALINGSCHEDULES_SCALINGSCHEDULES_COM
       const multipleAllowedFor = {
         scalingSchedules: true,
       };
+
+      this.timezones = timezones;
 
       this.addSchedule = (scheduleType) => {
         if (multipleAllowedFor[scheduleType]) {
@@ -36,6 +39,18 @@ module(GOOGLE_AUTOSCALINGPOLICY_COMPONENTS_SCALINGSCHEDULES_SCALINGSCHEDULES_COM
           this.policy[scheduleType] = {};
         }
       };
+
+      this.selectTimezone = (timezone, index) => {
+        const { scalingSchedules } = this.policy;
+        const schedule = scalingSchedules[index];
+        scalingSchedules[index] = { ...schedule, timezone };
+
+        this.updatePolicy({
+          ...this.policy,
+          scalingSchedules: [...scalingSchedules],
+        });
+      };
+
       function emptyOrUndefined(value) {
         return _.isEqual(value, {}) || _.isUndefined(value);
       }

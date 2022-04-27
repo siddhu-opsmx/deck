@@ -9,9 +9,12 @@
       </label>
     </div>
   </div>
-  <gce-auto-scaling-policy-selector
-    ng-if="command.enableAutoScaling"
-    enabled="command.enableAutoScaling"
-    auto-Scaling-policy="command.autoScalingPolicy"
-  ></gce-auto-scaling-policy-selector>
+  <div>
+    <gce-auto-scaling-policy-Selector-Component
+      ng-if="command.enableAutoScaling"
+      enabled="command.enableAutoScaling"
+      auto-scaling-policy="command.autoscalingPolicy"
+      set-auto-scaling-policy="ctrl.setAutoScalingPolicy(autoscalingPolicy)"
+    ></gce-auto-scaling-policy-Selector-Component>
+  </div>
 </ng-form>

@@ -2,7 +2,7 @@
 
 import UIROUTER_ANGULARJS from '@uirouter/angularjs';
 import * as angular from 'angular';
-import _ from 'lodash';
+import _, { isEmpty } from 'lodash';
 
 import { FirewallLabels, INSTANCE_TYPE_SERVICE, ModalWizard, TaskMonitor } from '@spinnaker/core';
 
@@ -263,6 +263,7 @@ angular
       this.isValid = function () {
         const selectedZones =
           $scope.command.selectZones && _.get($scope, 'command.distributionPolicy.zones.length') >= 1;
+        const autoScalingPolicy = $scope.command.autoscalingPolicy;
         return (
           $scope.command &&
           ($scope.command.viewState.disableImageSelection || $scope.command.image) &&
@@ -274,6 +275,11 @@ angular
           $scope.command.capacity.desired !== null &&
           (!$scope.command.selectZones || selectedZones) &&
           $scope.form.$valid &&
+          (!autoScalingPolicy ||
+            (autoScalingPolicy &&
+              (!isEmpty(autoScalingPolicy.cpuUtilization) ||
+                !isEmpty(autoScalingPolicy.customMetricUtilizations) ||
+                !isEmpty(autoScalingPolicy.loadBalancingUtilization)))) &&
           ModalWizard.isComplete()
         );
       };
@@ -436,11 +442,11 @@ angular
       this.onEnableAutoScalingChange = function () {
         // Prevent empty auto-scaling policies from being overwritten by those of their ancestors
         $scope.command.overwriteAncestorAutoScalingPolicy =
-          $scope.command.autoScalingPolicy != null && $scope.command.enableAutoScaling === false;
+          $scope.command.autoscalingPolicy != null && $scope.command.enableAutoScaling === false;
       };
 
       this.setAutoScalingPolicy = function (autoScalingPolicy) {
-        $scope.command.autoScalingPolicy = autoScalingPolicy;
+        $scope.command.autoscalingPolicy = autoScalingPolicy;
       };
 
       this.cancel = function () {
