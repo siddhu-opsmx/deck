@@ -30,14 +30,18 @@ module(GCE_AUTOSCALING_POLICY_SELECTOR_COMPONENT, [
   .controller('gceUpsertAutoscalingPolicyCtrl', [
     '$scope',
     function ($scope) {
-      this.policy = cloneDeep({});
-      this.setAutoScalingPolicy({ autoscalingPolicy: this.policy });
+      var vm = this;
+      this.$onInit = function () {
+        debugger;
+        this.policy = cloneDeep({});
+        this.setAutoScalingPolicy({ autoscalingPolicy: this.policy });
 
-      this.updatePolicy = (updatedPolicy) => {
-        $scope.$applyAsync(() => {
-          this.policy = updatedPolicy;
-          this.setAutoScalingPolicy({ autoscalingPolicy: this.policy });
-        });
+        this.updatePolicy = (updatedPolicy) => {
+          $scope.$applyAsync(() => {
+            this.policy = updatedPolicy;
+            this.setAutoScalingPolicy({ autoscalingPolicy: this.policy });
+          });
+        };
       };
     },
   ])
