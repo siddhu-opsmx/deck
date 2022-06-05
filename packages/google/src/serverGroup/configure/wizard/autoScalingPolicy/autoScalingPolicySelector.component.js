@@ -32,7 +32,6 @@ module(GCE_AUTOSCALING_POLICY_SELECTOR_COMPONENT, [
     function ($scope) {
       var vm = this;
       this.$onInit = function () {
-        debugger;
         this.policy = cloneDeep({});
         this.setAutoScalingPolicy({ autoscalingPolicy: this.policy });
 
