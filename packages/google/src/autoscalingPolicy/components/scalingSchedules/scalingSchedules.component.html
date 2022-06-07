@@ -67,8 +67,11 @@
             class="form-control input-sm"
             required
             ng-model="schedule.duration"
-            min="0"
+            min="301"
           />
+        </div>
+        <div class="col-md-4 error-message" ng-if="scalingSchedule.duration.$error.min">
+          Must be greater than 300 seconds.
         </div>
       </div>
     </ng-form>
