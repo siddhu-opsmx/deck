@@ -18,6 +18,7 @@
     "@spinnaker/appengine": "^0.1.1",
     "@spinnaker/cloudfoundry": "^0.1.1",
     "@spinnaker/core": "^0.22.1",
+    "@spinnaker/cloudrun": "^0.0.1",
     "@spinnaker/docker": "^0.0.135",
     "@spinnaker/ecs": "^0.0.352",
     "@spinnaker/google": "^0.2.1",

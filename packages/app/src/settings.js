@@ -89,6 +89,7 @@ window.spinnakerSettings = {
     'aws',
     'azure',
     'cloudfoundry',
+    'cloudrun',
     'dcos',
     'ecs',
     'gce',
@@ -207,6 +208,11 @@ window.spinnakerSettings = {
         account: 'my-cloudfoundry-account',
       },
     },
+    cloudrun: {
+      defaults: {
+        account: 'my-cloudrun-account',
+      },
+    },
     dcos: {
       defaults: {
         account: 'my-dcos-account',
@@ -249,7 +255,11 @@ window.spinnakerSettings = {
         region: 'cn-north-1',
       },
     },
-    kubernetes: {},
+    kubernetes: {
+      defaults: {
+        account: 'my-cloudrun-account',
+      },
+    },
     oracle: {
       defaults: {
         account: 'DEFAULT',
