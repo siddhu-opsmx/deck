@@ -14,7 +14,7 @@ import { DeployStatus } from './manifestStatus/DeployStatus';
 Registry.pipeline.registerStage({
   label: 'Deploy (Cloudrun)',
   description: 'Deploy a Cloudrun manifest yaml/json file.',
-  key: 'deploy',
+  key: 'deployCloudrunManifest',
   cloudProvider: 'cloudrun',
   component: DeployStageConfig,
   executionDetailsSections: [DeployStatus, ExecutionDetailsTasks, ExecutionArtifactTab],
